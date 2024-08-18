@@ -1,0 +1,118 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    overflow: hidden; /* Asegura que no aparezcan barras de desplazamiento */
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden; /* Evita que el contenido se desborde */
+}
+
+.video-container {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    filter: blur(5px);
+    opacity: 1; /* Asegura que los videos no cambien de opacidad */
+    transition: transform 0.3s ease; /* Agregar transición para el efecto de hover */
+}
+
+.video-container.left, .video-container.right {
+    background-attachment: fixed; /* Efecto parallax */
+    background-size: cover; /* Ajusta el tamaño del fondo */
+}
+
+.video-container.left {
+    background-image: url('edit.mp4'); /* Cambia esto a una imagen de fondo si es necesario */
+    animation-delay: 0.5s; /* Retrasar la animación del video izquierdo */
+}
+
+.video-container.right {
+    background-image: url('mahtio.mp4'); /* Cambia esto a una imagen de fondo si es necesario */
+    animation-delay: 1s; /* Retrasar la animación del video derecho */
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-center {
+    position: absolute;
+    top: 57%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+}
+
+.image-center img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.5s ease;
+}
+
+/* Efecto de hover para el video de la derecha */
+
+/* Texto que aparece al hacer scroll */
+.scroll-text {
+    position: absolute;
+    top: 10%;
+   left: 40%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 2em;
+    transition: opacity 0.5s ease, top 0.5s ease;
+    animation-delay: 0.5s; /* Retrasar la animación del video izquierdo */
+
+    z-index: 10; /* Asegura que esté encima del contenido */
+}
+.scrolll-text {
+    position: absolute;
+    top: 10%;
+   left: 40%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 2em;
+    filter: blur(10px);
+    transition: opacity 1.5s ease, top 0.5s ease;
+    animation-delay: 1s; /* Retrasar la animación del video izquierdo */
+
+    z-index: 10; /* Asegura que esté encima del contenido */
+}
+.video-container.right:hover ,.scroll-text{
+    filter: blur(0px);
+
+}
+
+.video-container.left:hover ,.scrolll-text{
+    filter: blur(0px);
+
+}
+.show-text {
+    opacity: 1;
+    top: 5%; /* Puedes ajustar la posición si es necesario */
+}
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .image-center {
+        width: 100%;
+        top: 80%; /* Ajustar posición en dispositivos más pequeños */
+    }
+
+}
